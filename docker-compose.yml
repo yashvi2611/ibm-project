@@ -1,0 +1,9 @@
+version: '3'
+services:
+  server-sgn:
+    build: .
+    image: 127.0.0.1:5000/sgn-server
+    container_name: server
+    ports:
+      - 8080:8080    
+  

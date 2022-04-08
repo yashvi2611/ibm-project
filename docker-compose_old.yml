@@ -1,0 +1,22 @@
+version: '3'
+services:
+  server-sgn:
+    depends_on: 
+      - sgn-db   
+    build: .
+    image: sgn-server
+    container_name: server
+    ports:
+      - 8080:8080    
+    links: 
+      - sgn-db:sgn-db
+  sgn-db:
+    image: mysql:8
+    restart: always
+    container_name: sgn-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=SGN
+      - MYSQL_DATABASE=sgndb
+    ports:
+      - 9907:3306
+  
